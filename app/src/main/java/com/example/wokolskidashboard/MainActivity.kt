@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.wokolskidashboard.ui.components.BalanceHeader
 import com.example.wokolskidashboard.ui.theme.WokolskiDashBoardTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,5 +44,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     WokolskiDashBoardTheme {
         Greeting("Android")
+        BalanceHeader(3000)
     }
 }
