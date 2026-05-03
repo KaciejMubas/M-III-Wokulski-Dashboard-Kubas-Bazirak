@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,12 +39,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val transactions = remember { mutableStateListOf<Transaction>() }
+    val kwota = transactions.sumOf { it.kwota }
 
     Column {
-        BalanceHeader()
+        BalanceHeader(kwota)
 
         ExpenseForm { newTransaction ->
-            transactions.add(newTransaction)
+            (transactions.add(newTransaction))
         }
 
         transactions.forEach { transaction ->

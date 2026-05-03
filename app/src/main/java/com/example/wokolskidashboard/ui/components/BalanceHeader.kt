@@ -21,9 +21,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun BalanceHeader(modifier: Modifier = Modifier)
+fun BalanceHeader(kwota: Double = 0.00, modifier: Modifier = Modifier)
 {
-    var kwota by remember { mutableStateOf(0)}
+
     Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -45,11 +45,6 @@ fun BalanceHeader(modifier: Modifier = Modifier)
                 fontWeight = FontWeight.Medium,
 
             )
-            Button(
-                onClick = {kwota += 1}
-            ) {
-                Text("Add")
-            }
 
         }
 
