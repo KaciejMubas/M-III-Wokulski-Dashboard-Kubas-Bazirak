@@ -48,6 +48,8 @@ fun MainScreen() {
             (transactions.add(newTransaction))
         }
 
+        //Dodaj tutaj IncomeForm
+
         transactions.forEach { transaction ->
             TransactionCard(transaction)
         }

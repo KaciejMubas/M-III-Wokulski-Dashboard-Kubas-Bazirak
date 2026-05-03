@@ -20,7 +20,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.wokolskidashboard.model.Transaction
 import java.nio.DoubleBuffer
 
@@ -52,8 +54,11 @@ fun ExpenseForm(onExpenseAdd: (Transaction) -> Unit)
                 {titleKwota = it},
                 "Ilosc Kasy"
             )
+            Text(text = "Czy transakcja była Konieczna (niezbędna)?",
+                fontSize = 16.sp,
+            modifier = Modifier.padding(0.dp,5.dp,0.dp,0.dp))
             Switch(
-                modifier = Modifier.padding(20.dp),
+                modifier = Modifier.padding(1.dp),
                 checked = wydatPotrzebny,
                 onCheckedChange = {
                     wydatPotrzebny = it

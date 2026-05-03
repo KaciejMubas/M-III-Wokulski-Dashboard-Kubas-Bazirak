@@ -40,11 +40,11 @@ fun TransactionCard(transaction: Transaction){
             )
             Text( text = (
                     if(transaction.Potrzebne == true){
-                        "Potrzebne"
+                        "Potrzebny"
                     }
                     else
                     {
-                        "Zbędne"
+                        "Zbędny"
                     }
                     ),
                 fontSize = 18.sp,
