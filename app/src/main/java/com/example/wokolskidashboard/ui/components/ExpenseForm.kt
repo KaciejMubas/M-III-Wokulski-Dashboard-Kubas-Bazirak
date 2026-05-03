@@ -20,18 +20,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.wokolskidashboard.model.Transaction
 
 @Composable
-fun ExpenseForm(onExpenseAdd: (String, Double, Boolean) -> Unit)
+fun ExpenseForm(onExpenseAdd: (Transaction) -> Unit)
 {
     var titleWydat by remember { mutableStateOf("")}
     var titleKwota by remember { mutableStateOf("")}
     var wydatPotrzebny by remember { mutableStateOf(false)}
-    var Validity = titleWydat.isBlank() && (titleKwota.toDoubleOrNull() ?: 0.00) > 0
+    var Validity: Boolean = !titleWydat.isBlank() && (titleKwota.toDoubleOrNull() ?: 0.00) > 0.0
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .background(MaterialTheme.colorScheme.primaryContainer)
     )
     {
@@ -47,7 +48,7 @@ fun ExpenseForm(onExpenseAdd: (String, Double, Boolean) -> Unit)
             WokulskiTextField(
                 titleKwota,
                 {titleKwota = it},
-                "Nazwa Wydatku"
+                "Ilosc Kasy"
             )
             Switch(
                 modifier = Modifier.padding(20.dp),
@@ -62,10 +63,13 @@ fun ExpenseForm(onExpenseAdd: (String, Double, Boolean) -> Unit)
                 enabled = Validity,
 
                 onClick = {
-                    val kwota = titleKwota.toDouble()
-                    val title = titleWydat
-                    val potrz = wydatPotrzebny
-                    onExpenseAdd(title,kwota,potrz)
+                    val transaction = Transaction(
+                        nazwa = titleWydat,
+                        kwota = titleKwota.toDouble(),
+                        flagRodzaj = true,
+                        Potrzebne = wydatPotrzebny
+                    )
+                    onExpenseAdd(transaction)
                 }
 
             )

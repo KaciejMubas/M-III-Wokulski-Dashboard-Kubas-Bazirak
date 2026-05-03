@@ -10,4 +10,7 @@ package com.example.wokolskidashboard.model
 // True = Wydatek
 // False = Przychód
 
-data class Transaction (var nazwa: String, var kwota: Int, var flagRodzaj: Boolean?)
+data class Transaction (var nazwa: String, var kwota: Double, var flagRodzaj: Boolean, var Potrzebne: Boolean? = false)
+{
+
+}
