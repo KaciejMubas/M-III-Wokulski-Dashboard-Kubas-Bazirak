@@ -18,14 +18,14 @@ fun WokulskiTextField(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
-    keyboardType: KeyboardType = KeyboardType.Text
+    // keyboardType: KeyboardType = KeyboardType.Text
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
         modifier = Modifier.fillMaxWidth(),
-        keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+        //keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
         shape = RoundedCornerShape(8.dp)
     )
 }
