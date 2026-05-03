@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.wokolskidashboard.ui.components.BalanceHeader
 import com.example.wokolskidashboard.ui.theme.WokolskiDashBoardTheme
 
+
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     WokolskiDashBoardTheme {
-        Greeting("Android")
-        BalanceHeader(3000)
+        BalanceHeader()
     }
 }

@@ -6,17 +6,23 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun BalanceHeader(kwota: Number, modifier: Modifier = Modifier)
+fun BalanceHeader(modifier: Modifier = Modifier)
 {
+    var kwota by remember { mutableStateOf(0)}
     Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -38,7 +44,13 @@ fun BalanceHeader(kwota: Number, modifier: Modifier = Modifier)
                 fontWeight = FontWeight.Medium,
 
             )
+            Button(
+                onClick = {kwota += 1}
+            ) {
+                Text("Add")
+            }
 
         }
+
     }
 }
