@@ -4,9 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.wokolskidashboard.model.Transaction
 import com.example.wokolskidashboard.ui.components.BalanceHeader
 import com.example.wokolskidashboard.ui.components.ExpenseForm
+import com.example.wokolskidashboard.ui.components.IncomeForm
 import com.example.wokolskidashboard.ui.components.TransactionCard
 import com.example.wokolskidashboard.ui.theme.WokolskiDashBoardTheme
 
@@ -39,16 +44,24 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val transactions = remember { mutableStateListOf<Transaction>() }
-    val kwota = transactions.sumOf { it.kwota }
+    val kwota = transactions.sumOf { it.amount }
 
-    Column {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .background(MaterialTheme.colorScheme.primaryContainer)
+    ) {
         BalanceHeader(kwota)
 
         ExpenseForm { newTransaction ->
-            (transactions.add(newTransaction))
+            transactions.add(newTransaction)
         }
 
-        //Dodaj tutaj IncomeForm
+        //Income form accepts different arguements from expense so that's why they're different www
+        IncomeForm { title, amount ->
+            transactions.add(Transaction(title, amount,false,false))
+        }
 
         transactions.forEach { transaction ->
             TransactionCard(transaction)

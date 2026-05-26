@@ -71,10 +71,10 @@ fun ExpenseForm(onExpenseAdd: (Transaction) -> Unit)
 
                 onClick = {
                     val transaction = Transaction(
-                        nazwa = titleWydat,
-                        kwota = titleKwota.toDouble() * -1,
-                        flagRodzaj = true,
-                        Potrzebne = wydatPotrzebny
+                        title = titleWydat,
+                        amount = titleKwota.toDouble() * -1,
+                        isExpense = true,
+                        necessary = wydatPotrzebny
                     )
                     onExpenseAdd(transaction)
                     titleKwota = ""

@@ -25,21 +25,22 @@ fun TransactionCard(transaction: Transaction){
     contentAlignment = Alignment.Center,
     modifier = Modifier
         .fillMaxWidth()
-        .background(MaterialTheme.colorScheme.secondaryContainer)
-        .border(3.dp, Color.hsl(31F, 0.73F, 0.51f))
+        .background(Color.hsl(239F, 0.47F, 0.68F))
+        .border(3.dp, Color.hsl(245F, 0.34F, 0.31f))
+
     )
     {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top,
         ) {
-        if(transaction.flagRodzaj){
+        if(transaction.isExpense){
             Text( text = ("Wydatek"),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
             )
             Text( text = (
-                    if(transaction.Potrzebne == true){
+                    if(transaction.necessary == true){
                         "Potrzebny"
                     }
                     else
@@ -58,13 +59,13 @@ fun TransactionCard(transaction: Transaction){
             )
         }
         Text(
-            text = ("${transaction.nazwa}"),
+            text = ("${transaction.title}"),
             fontSize = 18.sp,
             fontWeight = FontWeight.Medium,
 
             )
         Text(
-            text = (" KWOTA: ${transaction.kwota}"),
+            text = (" KWOTA: ${transaction.title}"),
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
 
