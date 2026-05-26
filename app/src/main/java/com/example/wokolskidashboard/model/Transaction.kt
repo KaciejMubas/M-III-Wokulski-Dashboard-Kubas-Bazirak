@@ -6,3 +6,17 @@ data class Transaction(
     val isExpense: Boolean
 )
 
+/*enum class Flag(val rodzaj: String){
+    WYDATEK("wydatek"),
+    PRZYCHOD("przychod")
+
+}*/
+
+// Boolean flagi:
+// True = Wydatek
+// False = Przychód
+
+data class Transaction (var nazwa: String, var kwota: Double, var flagRodzaj: Boolean, var Potrzebne: Boolean? = false)
+{
+
+}
