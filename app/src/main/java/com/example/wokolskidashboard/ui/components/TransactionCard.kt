@@ -65,7 +65,7 @@ fun TransactionCard(transaction: Transaction){
 
             )
         Text(
-            text = (" KWOTA: ${transaction.title}"),
+            text = (" KWOTA: ${transaction.amount}"),
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
 
